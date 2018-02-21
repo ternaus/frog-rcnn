@@ -1,0 +1,12 @@
+dummy-14.1
+- fixed empty detection at early training iterations. see "def detections_to_proposals(detections)"
+
+
+dummy-14.2
+- added submit.py to do instance segmentation for whole image. This function is imcomplete yet
+  for example results and an example trained model, please see the "example_results/14.2" folder 
+  on the google drive.
+
+- mask_nms() of mask_nms.py: added "cfg.mask_test_nms_threshold" to reject low score detection 
+
+- debug_and_draw() of train.py: updated.
