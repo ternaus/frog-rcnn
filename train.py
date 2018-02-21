@@ -2,30 +2,25 @@ import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 
-# from net.rate import *
-import cv2
-import time
-import argparse
-import json
-from pathlib import Path
 import time
 
 import cv2
-import numpy as np
-import torch
-from torch import nn
 from torch.optim import Adam, SGD
 from torch.utils.data import DataLoader, Dataset
-from torchvision.transforms import ToTensor, Normalize, Compose
-import torch.backends.cudnn as cudnn
-from torch import nn
+
+from torch.utils.data.sampler import (SequentialSampler,
+                                      RandomSampler)
+
 from torch.autograd import Variable
 from dataset.reader import (multi_mask_to_annotation,
                             multi_mask_to_overlay,
                             ScienceDataset)
 
 from dataset.transform import random_crop_transform2, fix_crop_transform2
-from common import RESULTS_DIR, PROJECT_PATH
+
+from common import (RESULTS_DIR,
+                    PROJECT_PATH,
+                    IDENTIFIER)
 
 from utility.file import (Logger,
                           backup_project_as_zip,
@@ -41,6 +36,9 @@ from model.configuration import Configuration
 
 
 from utility.draw import image_show
+
+from net.rate import (get_learning_rate,
+                      adjust_learning_rate)
 
 
 WIDTH, HEIGHT = 256, 256

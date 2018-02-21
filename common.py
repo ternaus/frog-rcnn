@@ -27,7 +27,6 @@ import matplotlib
 
 matplotlib.use('TkAgg')
 
-from torch.utils.data.sampler import *
 
 # ---------------------------------------------------------------------------------
 print('@%s:  ' % os.path.basename(__file__))
