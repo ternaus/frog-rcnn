@@ -10,6 +10,9 @@ import time
 import skimage
 import numpy as np
 import time
+from common import DATA_DIR
+from utility.file import read_list_from_file
+from utility.draw import image_show
 
 
 # data reader  ----------------------------------------------------------------
@@ -37,7 +40,7 @@ class ScienceDataset(Dataset):
     def __getitem__(self, index):
         id = self.ids[index]
         image_id = id.split('/')[-1]
-        image = cv2.imread(DATA_DIR + '/image/' + id + '/images/' + image_id + '.png', cv2.IMREAD_COLOR)
+        image = cv2.imread(str(DATA_DIR / ('image' + id) / ('images' + image_id + '.png')), cv2.IMREAD_COLOR)
 
         if self.mode in ['train']:
             multi_mask = np.load(DATA_DIR + '/image/' + id + '/multi_mask.npy')  # .astype(int32)
