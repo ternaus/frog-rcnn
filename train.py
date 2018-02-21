@@ -39,6 +39,10 @@ from dataset.process import thresh_to_inner_contour
 
 from model.configuration import Configuration
 
+
+from utility.draw import image_show
+
+
 WIDTH, HEIGHT = 256, 256
 
 # -------------------------------------------------------------------------------------
